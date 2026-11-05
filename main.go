@@ -7,8 +7,7 @@ import (
 )
 
 
-type Medicine struct {
-	name            string
+type Medicine struct {name string
 	manufacturer    string
 	manufactureDate time.Time
 	shelfLife       int 
@@ -40,4 +39,4 @@ func (m *Medicine) SetName(name string) error {
 	m.name = name
 	return nil
 }
-
+func (m *Medicine) GetName(name string) 
