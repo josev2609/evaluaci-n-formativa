@@ -164,19 +164,19 @@ func main() {
 	date1 := time.Date(2023, time.January, 15, 0, 0, 0, 0, time.UTC)
 	date2 := time.Date(2023, time.June, 10, 0, 0, 0, 0, time.UTC)
 
-	t1, _ := NewTablet("Paracetamol", "PharmaECU", date1, 24, 500.0, false)
-	t2, _ := NewTablet("Ibuprofeno", "Ecuhealth", date2, 18, 400.0, true)
+	t1,:= NewTablet("Paracetamol", "PharmaECU", date1, 24, 500.0, false)
+	t2,  := NewTablet("Ibuprofeno", "Ecuhealth", date2, 18, 400.0, true)
 	tabletInventory = append(tabletInventory, t1, t2)
 
-	s1, _ := NewSyrup("Amoxicilina", "Ecumed", date1, 12, 120.0, "Fresa")
+	s1,:= NewSyrup("Amoxicilina", "Ecumed", date1, 12, 120.0, "Fresa")
 	syrupInventory = append(syrupInventory, s1)
 
 	fmt.Println("INVENTARIO")
-	for _, t := range tabletInventory {
+	for , t := range tabletInventory {
 		t.DisplayDetails()
 		fmt.Printf("Caducidad:", t.ExpirationDate().Format("2006-01-02"))
 	}
-	for _, s := range syrupInventory {
+	for , s := range syrupInventory {
 		s.DisplayDetails()
 		fmt.Printf("Caducidad:", s.ExpirationDate().Format("2006-01-02"))
 	}
