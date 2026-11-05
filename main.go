@@ -108,7 +108,7 @@ func (t *Tablet) DosePerTablet() float64 {
 }
 
 func (t *Tablet) SetDosePerTablet(dose float64) error {
-	if dose <= 0 {
+	if <= 0 {
 		return errors.New("la dosis por tableta debe ser mayor a 0")
 	}
 	t.dosePerTablet = dose
