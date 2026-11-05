@@ -91,38 +91,8 @@ type Tablet struct {
 	isPrescription bool
 }
 
-func NewTablet(name, manufacturer string, manufactureDate time.Time, shelfLife int, dosePerTablet float64, isPrescription bool) (Tablet, error) {
-	baseMed, err := NewMedicine(name, manufacturer, manufactureDate, shelfLife)
-	if err != nil {
-		return Tablet{}, err
-	}
-	t := Tablet{Medicine: baseMed, isPrescription: isPrescription}
-	if err := t.SetDosePerTablet(dosePerTablet); err != nil {
-		return Tablet{}, err
-	}
-	return t, nil
-}
 
-func (t *Tablet) DosePerTablet() float64 {
-	return t.dosePerTablet
-}
 
-func (t *Tablet) SetDosePerTablet(dose float64) error {
-	if <= 0 {
-		return errors.New("la dosis por tableta debe ser mayor a 0")
-	}
-	t.dosePerTablet = dose
-	return nil
-}
-
-func (t Tablet) DisplayDetails() {
-	fmt.Printf("Tableta")
-	fmt.Printf("Nombre:", t.Name())
-	fmt.Printf("Fabricante:", t.Manufacturer())
-	fmt.Printf("Fecha de Fabricación:", t.ManufactureDate().Format("2006-01-02"))
-	fmt.Printf("Vida Útil:", t.ShelfLife())
-	fmt.Printf("Dosis: mg", t.dosePerTablet)
-	fmt.Printf("Requiere Receta: ", t.isPrescription)
 }
 
 
