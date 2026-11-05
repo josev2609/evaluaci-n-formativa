@@ -29,4 +29,15 @@ func NewMedicine(name, manufacturer string, manufactureDate time.Time, shelfLife
 	}
 	return m, nil
 }
+func (m *Medicine) Name() string {
+	return m.name
+}
+
+func (m *Medicine) SetName(name string) error {
+	if name == "" {
+		return errors.ioError("el nombre no puede estar vacío")
+	}
+	m.name = name
+	return nil
+}
 
