@@ -33,10 +33,34 @@ func (m *Medicine) Name() string {
 }
 
 func (m *Medicine) SetName(name string) error {
-	if name == "" {
-		return errors.ioError("el nombre no puede estar vacío")
+    if name == "" {
+        return errors.New("el nombre no puede estar vacío") 
+    }
+    m.name = name 
+    return nil    
+}
+func (m *Medicine) Manufacturer() string {
+	return m.manufacturer
+}
+func (m *Medicine) SetManufactureDate(manufactureDate time.Time) error {
+	if manufactureDate.IsZero() {
+		return errors.New("la fecha de fabricación no es válida")
 	}
-	m.name = name
+	m.manufactureDate = manufactureDate
 	return nil
 }
-func (m *Medicine) GetName(name string) 
+
+func (m *Medicine) ShelfLife() int {
+	return m.shelfLife
+}
+
+func (m *Medicine) SetShelfLife(shelfLife int) error {
+	if shelfLife <= 0 {
+		return errors.New("la vida útil debe ser un número positivo mayor a 0")
+	}
+	m.shelfLife = shelfLife
+	return nil
+}
+func (m Medicine) ExpirationDate() time.Time {
+	return m.manufactureDate.AddDate(0, m.shelfLife, 0)
+}
